@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrencies</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <!-- Collegamento al file CSS per la modalità notte -->
+    <style>
+
+
+                /* Modalità notte */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .navbar {
+            background-color: #333;
+        }
+
+        body.dark-mode .card {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .btn {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">CryptoTracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <!-- Pulsante per la modalità notte -->
+            <li class="nav-item">
+                <button class="btn btn-outline-light" id="toggleModeBtn">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="container mt-4">
+    <h2 class="mb-4">Top 100 Cryptocurrencies</h2>
+    <div class="row" id="cryptoCards">
+        <!-- Crypto Cards will be dynamically generated here -->
+        <div th:each="crypto : ${cryptocurrencies}" class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${crypto.id}"></h5>
+                    <p class="card-text" th:text="'Rank: ' + ${crypto.market_cap_rank}"></p>
+                    <p class="card-text" th:text="'Current Price: $' + ${crypto.current_price}"></p>
+                    <p class="card-text" th:text="'Market Cap: $' + ${crypto.market_cap}"></p>
+                    <p class="card-text" th:text="'24h Market Cap Change Percentage: ' + ${crypto.market_cap_change_percentage_24h} + '%'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- JavaScript per la modalità notte -->
+<script>
+    document.addEventListener('DOMContentLoaded', ()=> {
+        var toggleModeBtn = document.getElementById('toggleModeBtn');
+        toggleModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    });
+</script>
+
+</body>
+</html>
