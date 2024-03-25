@@ -21,4 +21,9 @@ public class CryptoController {
         model.addAttribute("cryptocurrencies", cryptocurrencies);
         return "cryptocurrencies"; // Nome della vista Thymeleaf
     }
+    @GetMapping("/")
+    public String home(){return"redirect:cryptocurrencies";}
+    @GetMapping("/home")
+    public String home1(){return"redirect:cryptocurrencies";}
+
 }

@@ -77,7 +77,8 @@
                     <p class="card-text" th:text="'Rank: ' + ${crypto.market_cap_rank}"></p>
                     <p class="card-text" th:text="'Current Price: $' + ${crypto.current_price}"></p>
                     <p class="card-text" th:text="'Market Cap: $' + ${crypto.market_cap}"></p>
-                    <p class="card-text" th:text="'24h Market Cap Change Percentage: ' + ${crypto.market_cap_change_percentage_24h} + '%'"></p>
+                    <!-- Aggiunta del colore dinamico -->
+                    <p class="card-text" th:classappend="${crypto.market_cap_change_percentage_24h > 0 ? 'text-success' : 'text-danger'}" th:text="'24h Change: ' + ${crypto.market_cap_change_percentage_24h} + '%'"></p>
                 </div>
             </div>
         </div>
