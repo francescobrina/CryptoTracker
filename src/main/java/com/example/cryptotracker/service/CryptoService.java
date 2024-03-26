@@ -19,4 +19,7 @@ public class CryptoService {
         System.out.println(Arrays.asList(cryptocurrencies));
         return Arrays.asList(cryptocurrencies);
     }
+
+
+
 }
